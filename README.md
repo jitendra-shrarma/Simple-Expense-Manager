@@ -7,7 +7,7 @@ a main menu should be printed with options as follows:
 3. Exit Program
 
 In show Expense :
-X-axis user needs to pay Y-axis user.
+Y-axis users needs to pay X-axis user.
 
 ## Some Screenshot
 #### 1. Main menu
