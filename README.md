@@ -10,14 +10,14 @@ In show Expense :
 X-axis user needs to pay Y-axis user.
 
 ## Some Screenshot
-1. Main menu
+#### 1. Main menu
 ![alt text](https://github.com/God-Hand/Simple-Expense-Manager/blob/master/screenshot/main_menu.png)
 
-2. Add an Expense
+#### 2. Add an Expense
 ![alt text](https://github.com/God-Hand/Simple-Expense-Manager/blob/master/screenshot/add_expense.png)
 
-3. Show Expense
+#### 3. Show Expense
 ![alt text](https://github.com/God-Hand/Simple-Expense-Manager/blob/master/screenshot/show_expense.png)
 
-4. Exit Program
+#### 4. Exit Program
 ![alt text](https://github.com/God-Hand/Simple-Expense-Manager/blob/master/screenshot/exit_program.png)
