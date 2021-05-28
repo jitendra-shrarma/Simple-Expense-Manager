@@ -8,3 +8,7 @@ a main menu should be printed with options as follows:
 
 In show Expense :
 X-axis user needs to pay Y-axis user.
+
+## Some Screenshot
+1. Main menu
+![alt text](https://github.com/God-Hand/Simple-Expense-Manager/blob/master/screenshot/add_expense.png)
