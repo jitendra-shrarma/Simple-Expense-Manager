@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_simple-expense-manager" default="compile.module.simple-expense-manager">
+  <dirname property="module.simple-expense-manager.basedir" file="${ant.file.module_simple-expense-manager}"/>
+  
+  <property name="module.jdk.home.simple-expense-manager" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.simple-expense-manager" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.simple-expense-manager" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.simple-expense-manager" value="-encoding UTF-8 -source 12 -target 12 ${compiler.args}"/>
+  
+  <property name="simple-expense-manager.output.dir" value="${module.simple-expense-manager.basedir}/out/production/Simple-Expense-Manager"/>
+  <property name="simple-expense-manager.testoutput.dir" value="${module.simple-expense-manager.basedir}/out/test/Simple-Expense-Manager"/>
+  
+  <path id="simple-expense-manager.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="simple-expense-manager.module.production.classpath">
+    <path refid="${module.jdk.classpath.simple-expense-manager}"/>
+    <path refid="library.lib.classpath"/>
+    <pathelement location="C:/Program Files/Java/jfoenix-9.0.8.jar"/>
+  </path>
+  
+  <path id="simple-expense-manager.runtime.production.module.classpath">
+    <pathelement location="${simple-expense-manager.output.dir}"/>
+    <path refid="library.lib.classpath"/>
+    <pathelement location="C:/Program Files/Java/jfoenix-9.0.8.jar"/>
+  </path>
+  
+  <path id="simple-expense-manager.module.classpath">
+    <path refid="${module.jdk.classpath.simple-expense-manager}"/>
+    <pathelement location="${simple-expense-manager.output.dir}"/>
+    <path refid="library.lib.classpath"/>
+    <pathelement location="C:/Program Files/Java/jfoenix-9.0.8.jar"/>
+  </path>
+  
+  <path id="simple-expense-manager.runtime.module.classpath">
+    <pathelement location="${simple-expense-manager.testoutput.dir}"/>
+    <pathelement location="${simple-expense-manager.output.dir}"/>
+    <path refid="library.lib.classpath"/>
+    <pathelement location="C:/Program Files/Java/jfoenix-9.0.8.jar"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.simple-expense-manager">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.simple-expense-manager">
+    <patternset refid="excluded.from.module.simple-expense-manager"/>
+  </patternset>
+  
+  <path id="simple-expense-manager.module.sourcepath">
+    <dirset dir="${module.simple-expense-manager.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.simple-expense-manager" depends="compile.module.simple-expense-manager.production,compile.module.simple-expense-manager.tests" description="Compile module Simple-Expense-Manager"/>
+  
+  <target name="compile.module.simple-expense-manager.production" depends="register.custom.compilers" description="Compile module Simple-Expense-Manager; production classes">
+    <mkdir dir="${simple-expense-manager.output.dir}"/>
+    <javac2 destdir="${simple-expense-manager.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.simple-expense-manager}/javac">
+      <compilerarg line="${compiler.args.simple-expense-manager}"/>
+      <bootclasspath refid="simple-expense-manager.module.bootclasspath"/>
+      <classpath refid="simple-expense-manager.module.production.classpath"/>
+      <src refid="simple-expense-manager.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.simple-expense-manager"/>
+    </javac2>
+    
+    <copy todir="${simple-expense-manager.output.dir}">
+      <fileset dir="${module.simple-expense-manager.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.simple-expense-manager.tests" depends="register.custom.compilers,compile.module.simple-expense-manager.production" description="compile module Simple-Expense-Manager; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.simple-expense-manager" description="cleanup module">
+    <delete dir="${simple-expense-manager.output.dir}"/>
+    <delete dir="${simple-expense-manager.testoutput.dir}"/>
+  </target>
+</project>

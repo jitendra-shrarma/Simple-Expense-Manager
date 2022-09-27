@@ -20,6 +20,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
@@ -34,6 +35,7 @@ public class Controller implements Initializable {
     @FXML private TextField amount;
     @FXML private JFXButton back;
     @FXML private GridPane matrix;
+    private static DecimalFormat df2 = new DecimalFormat("#.##");
     private Double[][] matrixData = new Double[3][3];
     HashMap<String, Integer> map = new HashMap<>();
 
@@ -46,7 +48,7 @@ public class Controller implements Initializable {
         for (Node node : matrix.getChildren()) {
             if(matrix.getRowIndex(node) > 0 && matrix.getColumnIndex(node) > 0) {
                 Label label = (Label) node;
-                label.setText(String.valueOf(matrixData[matrix.getRowIndex(node)-1][matrix.getColumnIndex(node)-1]));
+                label.setText(df2.format(matrixData[matrix.getRowIndex(node)-1][matrix.getColumnIndex(node)-1]));
             }
         }
         changePane.getChildren().clear();
@@ -122,7 +124,7 @@ public class Controller implements Initializable {
         for(int i=1; i<=3; i++){
             for(int j=1; j<=3; j++){
                 matrixData[i-1][j-1] = 0.0;
-                Label label = new Label("0");
+                Label label = new Label("0.00");
                 label.setFont(Font.font("16"));
                 label.prefWidthProperty().bind(matrix.widthProperty().divide(4));
                 label.prefHeightProperty().bind(matrix.heightProperty().divide(4));
